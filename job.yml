@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: data-backup-job
+spec:
+  template:
+    metadata:
+      name: data-backup-pod
+    spec:
+      containers:
+        - name: backup
+          image: busybox
+          command: ["sh", "-c", "echo Backing up data && sleep 10"]
+      restartPolicy: OnFailure
